@@ -14,7 +14,7 @@ export default function PropertyPage({
     <>
       <h1>Property {params.propertyId}: { property.name }</h1>
       <ul>{ property.spaces.map((space) => (
-        <li>
+        <li key={space.imagePath}>
           <div>{space.name}</div>
           <Image
             src={getImageUrl(space.imagePath)}
