@@ -1,0 +1,136 @@
+[
+  {
+    "id": "1",
+    "name": "hipster condo",
+    "location": {
+      "city": "anaheim",
+      "state": "ca"
+    },
+    "spaces": [
+      {
+        "name": "master bedroom",
+        "imagePath": "/bedroom_1"
+      },
+      {
+        "name": "guest bedroom",
+        "imagePath": "/bedroom_2"
+      },
+      {
+        "name": "garage",
+        "imagePath": "/garage"
+      },
+      {
+        "name": "kitchen",
+        "imagePath": "/kitchen"
+      },
+      {
+        "name": "dining room",
+        "imagePath": "/dining"
+      },
+      {
+        "name": "living room",
+        "imagePath": "/living"
+      },
+      {
+        "name": "balcony",
+        "imagePath": "/balcony"
+      },
+      {
+        "name": "master bathroom",
+        "imagePath": "/bathroom_1"
+      },
+      {
+        "name": "guest bathroom",
+        "imagePath": "/bathroom_2"
+      }
+    ],
+    "contacts": {
+      "owner": {
+        "name": "Marc",
+        "number": 9495845555
+      },
+      "handyman": {
+        "name": "Javier",
+        "phone": 7141234567
+      },
+      "maid": {
+        "name": "Katy",
+        "phone": 9491234567
+      },
+      "tenant": {
+        "name": "Muhammad",
+        "phone": 3051212123
+      }
+    },
+    "notes": ""
+  },
+  {
+    "id": "2",
+    "name": "quiet house",
+    "location": {
+      "city": "san juan capistrano",
+      "state": "ca"
+    },
+    "spaces": [
+      {
+        "name": "master bedroom",
+        "imagePath": "/bedroom_1"
+      },
+      {
+        "name": "guest bedroom 1",
+        "imagePath": "/bedroom_2"
+      },
+      {
+        "name": "guest bedroom 2",
+        "imagePath": "/bedroom_3"
+      },
+      {
+        "name": "garage",
+        "imagePath": "/garage"
+      },
+      {
+        "name": "kitchen",
+        "imagePath": "/kitchen"
+      },
+      {
+        "name": "dining room",
+        "imagePath": "/dining"
+      },
+      {
+        "name": "living room",
+        "imagePath": "/living"
+      },
+      {
+        "name": "backyard",
+        "imagePath": "/backyard"
+      },
+      {
+        "name": "master bathroom",
+        "imagePath": "/bathroom_1"
+      },
+      {
+        "name": "guest bathroom",
+        "imagePath": "/bathroom_2"
+      }
+    ],
+    "contacts": {
+      "owner": {
+        "name": "Marc",
+        "number": 9495845555
+      },
+      "handyman": {
+        "name": "Javier",
+        "phone": 7141234567
+      },
+      "maid": {
+        "name": "Katy",
+        "phone": 9491234567
+      },
+      "tenant": {
+        "name": "Jessica",
+        "phone": 3052134321
+      }
+    },
+    "notes": ""
+  }
+]

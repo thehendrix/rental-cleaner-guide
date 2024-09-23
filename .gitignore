@@ -1,3 +1,4 @@
 # ignore folders and files
 node_modules/
 .next/
+.env
