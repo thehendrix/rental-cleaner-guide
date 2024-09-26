@@ -1,4 +1,5 @@
 # ignore folders and files
 node_modules/
+coverage/
 .next/
 .env

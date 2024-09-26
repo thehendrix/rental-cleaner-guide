@@ -12,18 +12,24 @@ export default function PropertyPage({
 
   return (
     <>
-      <h1>Property {params.propertyId}: { property.name }</h1>
-      <ul>{ property.spaces.map((space) => (
-        <li key={space.imagePath}>
-          <div>{space.name}</div>
-          <Image
-            src={getImageUrl(space.imagePath)}
-            width={540}
-            height={360}
-            alt="master bedroom"
-          />
-        </li>
-      )) }</ul>
+    {property?.name ?
+      <>
+        <h1>Property {params.propertyId}: { property.name }</h1>
+        <ul>{ property.spaces.map((space) => (
+          <li key={space.imagePath}>
+            <div>{space.name}</div>
+            <Image
+              src={getImageUrl(space.imagePath)}
+              width={540}
+              height={360}
+              alt="master bedroom"
+            />
+          </li>
+        )) }
+        </ul>
+      </>
+      : <h1>No Property Exists</h1>
+    }
     </>
   );
 }

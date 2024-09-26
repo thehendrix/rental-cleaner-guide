@@ -1,9 +1,12 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "next/typescript"
+    "next/typescript",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
   ],
   "rules": {
-    "eol-last": ["warn", "always"]
+    "eol-last": ["warn", "always"],
+    "no-trailing-spaces": "error"
   }
 }
