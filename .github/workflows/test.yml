@@ -1,0 +1,21 @@
+name: Test Project
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          node-version: 20
+      - name: Clean Install Of Dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm test
+      - name: Create Build Package
+        run: npm run build
