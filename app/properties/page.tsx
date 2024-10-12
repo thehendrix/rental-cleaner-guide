@@ -6,16 +6,16 @@ export default function PropertiesPage() {
     <>
       {properties.length ?
       <>
-        <h1>Properties List</h1>
+        <h1 className="pl-4 pt-4">Properties List</h1>
         <ul>
           {properties.map((property) => (
-            <li key={property.id}>
-              <Link href={`/properties/${property.id}`}>{property.name} in {property.location.city}, {property.location.state}</Link>
+            <li className="ml-4 mt-4 hover:text-blue-500" key={property.id}>
+              <Link href={`/properties/${property.id}`}>{property.name} in {property.address.city}, {property.address.state}</Link>
             </li>
           ))}
         </ul>
       </>
-      : <h1>No Properties Exist</h1>
+      : <h1 className="pl-4 pt-4">No Properties Exist</h1>
       }
     </>
   );
