@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from "next/navigation"
-import { getImageUrl } from '../../../../lib/imageHelper'
-import properties from '../../../../properties.json'
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { getImageUrl } from '../../../../lib/imageHelper';
+import { usePropertyContext } from '@/context/PropertyContext';
 
 export default function SpacesPage({ params }: { params: { spaceId: string }}) {
-
+  const properties = usePropertyContext();
   const property = properties.find((item) => item.id === params.propertyId);
   const pathname = usePathname();
 

@@ -1,13 +1,13 @@
-import { render, screen } from '@testing-library/react'
-import HomePage from '@/app/page'
-import { describe } from 'node:test'
+import { render, screen } from '@testing-library/react';
+import HomePage from '@/app/page';
+import { describe } from 'node:test';
 
 describe('HomePage', () => {
   it('should have Home Page text', () => {
-    render(<HomePage />)
+    render(<HomePage />);
 
-    const myElement = screen.getByText('Home Page!!!!!')
+    const myElement = screen.getByText('Home Page!!!!!');
 
-    expect(myElement).toBeInTheDocument(myElement)
-  })
-})
+    expect(myElement).toBeInTheDocument(myElement);
+  });
+});
