@@ -1,10 +1,14 @@
 [
   {
     "id": "1",
-    "name": "hipster condo",
-    "location": {
-      "city": "anaheim",
-      "state": "ca"
+    "name": "Hipster Condo",
+    "address": {
+      "street": "440 S Anaheim Blvd",
+      "unitNumber": "10",
+      "city": "Anaheim",
+      "state": "CA",
+      "zipCode": "92805",
+      "country": "United States"
     },
     "spaces": [
       {
@@ -66,10 +70,14 @@
   },
   {
     "id": "2",
-    "name": "quiet house",
-    "location": {
-      "city": "san juan capistrano",
-      "state": "ca"
+    "name": "Quiet House",
+    "address": {
+      "street": "26801 Old Mission Rd",
+      "unitNumber": "",
+      "city": "San Juan Capistrano",
+      "state": "CA",
+      "zipCode": "92675",
+      "country": "United States"
     },
     "spaces": [
       {

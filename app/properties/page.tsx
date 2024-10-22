@@ -1,21 +1,31 @@
-import Link from 'next/link'
-import properties from '../../properties.json'
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { usePropertyContext } from '@/context/PropertyContext';
+import { Property } from '@/types/property';
 
 export default function PropertiesPage() {
+  const router = useRouter();
+  const properties = usePropertyContext();
+
+  const handleNavigate = (propertyId: string) => {
+    if (propertyId) router.push(`/properties/${propertyId}`);
+  };
+
   return (
     <>
       {properties.length ?
       <>
-        <h1>Properties List</h1>
+        <h1 className="pl-4 pt-4">Properties List</h1>
         <ul>
-          {properties.map((property) => (
-            <li key={property.id}>
-              <Link href={`/properties/${property.id}`}>{property.name} in {property.location.city}, {property.location.state}</Link>
+          {(properties as Property[]).map((property) => (
+            <li className="ml-4 mt-4 hover:text-blue-500" key={property.id}>
+              <button onClick={() => handleNavigate(property?.id || '')}>{property.name} in {property.address?.city}, {property.address?.state}</button>
             </li>
           ))}
         </ul>
       </>
-      : <h1>No Properties Exist</h1>
+      : <h1 className="pl-4 pt-4">No Properties Exist</h1>
       }
     </>
   );

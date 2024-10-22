@@ -4,6 +4,6 @@ export default function SpacePage({
   params: { spaceId: string }
 }) {
   return (
-    <h1>Space { params.spaceId }</h1>
+    <h1 className="pl-4 pt-4">{ params.spaceId }</h1>
   );
 }

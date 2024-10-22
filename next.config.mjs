@@ -7,7 +7,10 @@ const nextConfig = {
         hostname: 'ik.imagekit.io/**'
       }
     ]
-  }
+  },
+  eslint: {
+    dirs: ['app', '__tests__', 'lib', 'context', 'styles']
+  },
 };
 
 export default nextConfig;
