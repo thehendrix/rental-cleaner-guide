@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { getImageUrl } from '@/lib/imageHelper';
 import { usePropertyContext } from '@/context/PropertyContext';
+import { Property, Address } from '@/types/property';
 
 export default function PropertyPage({
   params,
@@ -18,14 +19,13 @@ export default function PropertyPage({
     router.push(`${pathname}/spaces`);
   };
 
-  const property = properties.find((item) => item.id === params.propertyId);
+  const property = (properties as Array<Property>).find((item) => item.id === params.propertyId);
 
-  if (!property) {
-    return <h2 className="pl-4 pt-4 text-red-500">*No Property Exists*</h2>;
-  }
+  if (!property) return <h2 className="pl-4 pt-4 text-red-500">*No Property Exists*</h2>;
+
 
   const { name = '', spaces = [], address = {} } = property;
-  const { street = '', unitNumber = '', city = '', state = '', zipCode = '' } = address;
+  const { street = '', unitNumber = '', city = '', state = '', zipCode = '' } = address as Address;
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function PropertyPage({
             src={getImageUrl(spaces[0].imagePath)}
             width={540}
             height={360}
-            alt={spaces[0].name}
+            alt={spaces[0]?.name || ''}
           />
           <div className="pl-4 pt-4">
             <button className="text-xl hover:text-blue-500" onClick={() => handleNavigate()}>View All Spaces</button>

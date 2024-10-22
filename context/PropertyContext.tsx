@@ -1,12 +1,18 @@
 'use client';
 
-import { createContext, useContext } from 'react';
+import { Property } from '@/types/property';
+import { createContext, useContext, ReactNode } from 'react';
 
-const PropertyContext = createContext(null);
+interface PropertyProviderProps {
+  children: ReactNode;
+  properties: Property[];
+}
+
+const PropertyContext = createContext<Property[] | []>([]);
 
 export const usePropertyContext = () => useContext(PropertyContext);
 
-export const PropertyProvider = ({ children, properties }: Array) => {
+export const PropertyProvider = ({ children, properties }: PropertyProviderProps) => {
   return (
     <PropertyContext.Provider value={properties}>
       {children}

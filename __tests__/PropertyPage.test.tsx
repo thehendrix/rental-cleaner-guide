@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import PropertyPage from '@/app/properties/[propertyId]/page';
-import { describe } from 'node:test';
 import { PropertyProvider } from '@/context/PropertyContext';
 import { useRouter } from 'next/navigation';
 
@@ -13,21 +12,42 @@ jest.mock('next/navigation', () => ({
   usePathname: jest.fn(() => '/properties/1'),
 }));
 
-const mockParams = { propertyId: '1' };
-const mockPropertiesWithSpaces = [
-  {
-    id: '1',
-    name: 'mockName',
-    spaces: [
-      {
-        'name': 'mockName',
-        'imagePath': 'mockImagePath'
-      }
-    ]
-  }
-];
+let mockParams;
+let mockProperty1;
+let mockProperty2;
 
 describe('PropertyPage', () => {
+  beforeEach(() => {
+    mockParams = { propertyId: '1' };
+    mockProperty1 = [
+      {
+        id: '1',
+        name: 'mockName',
+        spaces: [
+          {
+            name: 'mockName',
+            imagePath: 'mockImagePath'
+          }
+        ]
+      }
+    ];
+    mockProperty2 = [
+      {
+        id: '1',
+        name: 'mockName',
+        address: {
+          street: '440 S Anaheim Blvd',
+          unitNumber: '10',
+          city: 'Anaheim',
+          state: 'CA',
+          zipCode: '92805',
+          country: 'United States'
+        },
+        spaces: []
+      }
+    ];
+  });
+
   it('should show no property exists', () => {
     const mockProperties = [];
 
@@ -63,24 +83,8 @@ describe('PropertyPage', () => {
   });
 
   it('should show address with unit number', () => {
-    const mockProperties = [
-      {
-        id: '1',
-        name: 'mockName',
-        address: {
-          street: '440 S Anaheim Blvd',
-          unitNumber: '10',
-          city: 'Anaheim',
-          state: 'CA',
-          zipCode: '92805',
-          country: 'United States'
-        },
-        spaces: []
-      }
-    ];
-
     render(
-      <PropertyProvider properties={mockProperties}>
+      <PropertyProvider properties={mockProperty2}>
         <PropertyPage params={mockParams}/>
       </PropertyProvider>
     );
@@ -90,24 +94,10 @@ describe('PropertyPage', () => {
   });
 
   it('should show address without unit number', () => {
-    const mockProperties = [
-      {
-        id: '1',
-        name: 'mockName',
-        address: {
-          street: '440 S Anaheim Blvd',
-          unitNumber: '',
-          city: 'Anaheim',
-          state: 'CA',
-          zipCode: '92805',
-          country: 'United States'
-        },
-        spaces: []
-      }
-    ];
+    mockProperty2[0].address.unitNumber = '';
 
     render(
-      <PropertyProvider properties={mockProperties}>
+      <PropertyProvider properties={mockProperty2}>
         <PropertyPage params={mockParams}/>
       </PropertyProvider>
     );
@@ -116,13 +106,25 @@ describe('PropertyPage', () => {
     expect(displayMessage1).toBeInTheDocument();
   });
 
-  it('should show image, alt and link', () => {
+  it('should show image, link, and alt', () => {
     render(
-      <PropertyProvider properties={mockPropertiesWithSpaces}>
+      <PropertyProvider properties={mockProperty1}>
         <PropertyPage params={mockParams}/>
       </PropertyProvider>
     );
 
+    const displayMessage = screen.getByText('View All Spaces');
+    expect(displayMessage).toBeInTheDocument();
+  });
+
+  it('should show image, link, and no alt', () => {
+    mockProperty1[0].spaces[0].name = '';
+
+    render(
+      <PropertyProvider properties={mockProperty1}>
+        <PropertyPage params={mockParams}/>
+      </PropertyProvider>
+    );
     const displayMessage = screen.getByText('View All Spaces');
     expect(displayMessage).toBeInTheDocument();
   });
@@ -132,7 +134,7 @@ describe('PropertyPage', () => {
     (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
 
     render(
-      <PropertyProvider properties={mockPropertiesWithSpaces}>
+      <PropertyProvider properties={mockProperty1}>
         <PropertyPage params={mockParams}/>
       </PropertyProvider>
     );
